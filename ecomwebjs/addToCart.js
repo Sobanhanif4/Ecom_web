@@ -1,4 +1,4 @@
-import { getCartProductFromLs } from "./getCartProucts";
+import { getCartProductFromLs } from "./getCartProducts";
 import { updateCartValue } from "./updateCartValue";
 
 
