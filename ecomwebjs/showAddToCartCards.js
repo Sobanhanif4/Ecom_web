@@ -1,5 +1,9 @@
 import products from "./api/products.json";
+import { fetchQuantityFromCartLS } from "./fetchQuantityFromCartLS";
 import { getCartProductFromLs } from "./getCartProducts";
+import { incrementDecrement } from "./incrementDecrement";
+import { removeProdFromCart } from "./removeProdFromCart";
+import { updateCartProductTotal } from "./updateCartProductTotal";
 
 let cartProducts = getCartProductFromLs();
 
@@ -30,6 +34,19 @@ const showCartProduct = () => {
         // productClone.querySelector(".stock").textContent = stock;
         // productClone.querySelector(".price").textContent = price;
 
+
+        productClone.querySelector(".productQuantity").textContent = LSActualData.quantity;
+        productClone.querySelector(".productPrice").textContent = LSActualData.price;
+
+
+        productClone.querySelector(".stockElement").addEventListener("click", (event) => {
+            incrementDecrement(event, id, stock, price);
+        });
+
+
+        productClone.querySelector(".remove-to-cart-button").addEventListener('click', () => removeProdFromCart(id));
+
+
         cartElement.appendChild(productClone); 
     });
 };
@@ -37,3 +54,7 @@ const showCartProduct = () => {
 // showing cart products 
 
 showCartProduct();
+
+// calculating the card product total 
+
+updateCartProductTotal();
